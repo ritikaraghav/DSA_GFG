@@ -1,0 +1,52 @@
+/* A binary tree node has data, pointer to left child
+   and a pointer to right child
+struct Node
+{
+    int data;
+    Node* left;
+    Node* right;
+}; */
+
+// Class Solution
+class Solution {
+  public:
+    // Function to count the number of leaf nodes in a binary tree.
+    
+    int countLeaves(Node* root) {
+        // write code here
+          queue<Node*>q;
+        
+        int count  = 0;
+        
+        if(root != NULL){
+            q.push(root);
+         
+        }
+        
+        else {
+            return -1;
+        }
+        
+        while(!q.empty()){
+            Node* temp = q.front();
+            q.pop();
+            Node* first = temp-> left;
+            if(first != NULL)
+            {
+                
+                q.push(first);
+            }
+                
+            Node* second = temp-> right;
+            if(second != NULL)
+            {
+               
+                q.push(second);
+            }
+            
+            if(first == NULL && second == NULL)count++;
+            
+        }
+        return count;
+    }
+};
